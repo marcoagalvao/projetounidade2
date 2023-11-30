@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Seu Dashboard{% endblock %}</title>
+    <!-- Adicione os arquivos CSS do Materialize -->
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <!-- Se você tiver seu próprio arquivo CSS personalizado, inclua-o aqui -->
+  </head>
+  <body>
+    <!-- Barra de Navegação -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Seu Dashboard</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Página Inicial</a></li>
+          <li><a href="#">Sair</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Menu Lateral -->
+    <ul id="slide-out" class="sidenav">
+      <li><a href="/">Início</a></li>
+      <li><a href="#">Página 1</a></li>
+      <li><a href="#">Página 2</a></li>
+    </ul>
+
+    <!-- Conteúdo Principal -->
+    <main>
+      <div class="container">
+        {% block content %}
+        <!-- Conteúdo específico da página do dashboard -->
+        {% endblock %}
+      </div>
+    </main>
+
+    <!-- Menu Lateral -->
+    <ul id="slide-out" class="sidenav">
+      <li><a href="/">Início</a></li>
+      <li><a href="#">Página 1</a></li>
+      <li><a href="#">Página 2</a></li>
+    </ul>
+
+    <!-- Ativação do Menu Lateral -->
+    <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">
+      <i class="material-icons">Menu</i>
+    </a>
+
+    <!-- Inicialização do Menu Lateral -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems);
+      });
+    </script>
+
+    <!-- Adicione os arquivos JavaScript do Materialize -->
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+        });
+    </script>
+  </body>
+</html>
